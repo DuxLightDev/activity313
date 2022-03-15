@@ -1,6 +1,6 @@
 #**************************************************
 # Activity 3.1.3 - Combo Menu - Iteration 1
-# Author: Collin G.
+# Author: Micah T
 # Variables:
 #   sandwich - user's input
 #   total - total cost of order
