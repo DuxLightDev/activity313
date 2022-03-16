@@ -2,9 +2,16 @@
 # Activity 3.1.3 - combo menu - iteration 1
 # Author: Micah T
 # Variables:
-#   sandwich - user's input
+#   sandwich - user's input on which sandwich
+#   drink - user's input on what drink
+#   fries - user's input on what fry size
 #   total - total cost of order
 #   sandwich_selected - bool, was sandwich ordered
+#   beverage_selected - bool, was beverage ordered
+#   fries_selected - bool, was fries ordered
+#   beverage_input - string, yes or no for beverage
+#   fries_input - string,  yes or no for fries
+#   packets - amount of ketchup ordered
 #***************************************************
 
 
@@ -13,6 +20,7 @@ total = 0.0
 sandwich_selected = True
 beverage_selected = True
 fries_selected = True
+packets = 0
 
 # iteration 1 - prompt user for sandwich type
 print("Sandwich Menu:\nChicken - $5.25\nBeef - $6.25\nTofu - $5.75\n")
@@ -29,13 +37,17 @@ else:
   sandwich_selected = False
 
 # iteration 2 - prompt user for drink
-beverage_selected = input("\nWould you like a drink?")
+beverage_input = input("\nWould you like a drink?")
 
-if(beverage_selected == "Yes"):
+if(beverage_input == "Yes"):
   beverage_selected = True
-elif(beverage_selected == "No"):
+elif(beverage_input == "No"):
   beverage_selected = False
-  
+  drink = "none"
+else:
+  beverage_selected = False
+  drink = "none"
+
 if(beverage_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.75\nLarge - $2.25")
   drink = input("\nWhat size would you like?")
@@ -48,7 +60,7 @@ if(beverage_selected == True):
     print("You have selected:", drink)
   elif(drink == "Large"):
     total += 2.25
-    print("You have selected:", drink)
+    pnonrint("You have selected:", drink)
   else:
     print("No drink selected!")
     
@@ -56,12 +68,16 @@ else:
   print("No drink selected!")
 
 # iteration 3 - prompt user for french fires
-fries_selected = input("\nWould you like french fries?")
+fries_input = input("\nWould you like french fries?")
 
-if(fries_selected == "Yes"):
+if(fries_input == "Yes"):
   fries_selected = True
-elif(fries_selected == "No"):
-  fries_selected == False
+elif(fries_input == "No"):
+  fries_selected = False
+  fries = "none"
+else:
+  fries_selected = False
+  fries = "none"
   
 if(fries_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.50\nLarge - $2.00")
@@ -86,22 +102,12 @@ if(fries_selected == True):
 else:
   print("No fries chosen!")
   
-print("Your total is:", total)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+packets = int(input("How many packets of ketchup would you like?"))
+
+total += packets * 0.25
+
+if(sandwich_selected == True and beverage_selected == True and fries_selected == True):
+  total -= 1.00
   
+print("You have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!")
+print("Your total is:", total)
