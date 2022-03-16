@@ -112,6 +112,7 @@ total += packets * 0.25
 
 if(sandwich_selected == True and beverage_selected == True and fries_selected == True): # discount code, subtracts 1$ if ordered all
   total -= 1.00
+  print("\nYou have been discounted for buying a combo meal!\n")
   
 print("\nYou have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
 print("\nYour total is: $", str(total)) # printing total
