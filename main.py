@@ -104,7 +104,8 @@ if(fries_selected == True):
     print("No fries chosen!")
 else:
   print("No fries chosen!")
-  
+
+# iteration 4 - prompt user for packets and repeat order and total
 packets = int(input("How many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
 
 total += packets * 0.25
