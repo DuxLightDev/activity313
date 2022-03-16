@@ -106,12 +106,12 @@ else:
   print("No fries chosen!")
 
 # iteration 4 - prompt user for packets and repeat order and total
-packets = int(input("How many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
+packets = int(input("\nHow many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
 
 total += packets * 0.25
 
 if(sandwich_selected == True and beverage_selected == True and fries_selected == True): # discount code, subtracts 1$ if ordered all
   total -= 1.00
   
-print("You have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
-print("Your total is: $", str(total)) # printing total
+print("\nYou have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
+print("\nYour total is: $", str(total)) # printing total
