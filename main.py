@@ -24,8 +24,9 @@ packets = 0
 
 # iteration 1 - prompt user for sandwich type
 print("Sandwich Menu:\nChicken - $5.25\nBeef - $6.25\nTofu - $5.75\n")
-sandwich = input("Which sandwich would you like?\nType none for no sandwich")
+sandwich = input("Which sandwich would you like?\nType none for no sandwich") # asking for which sandwich wanted
 
+# adding price for each type of sandwich
 if (sandwich == "Chicken"):
   total += 5.25
 elif (sandwich == "Beef"):
@@ -37,10 +38,11 @@ else:
   sandwich_selected = False
 
 # iteration 2 - prompt user for drink
-beverage_input = input("\nWould you like a drink?")
+beverage_input = input("\nWould you like a drink?") # beverage prompt; beverage_input = string of yes or no
 
-if(beverage_input == "Yes"):
-  beverage_selected = True
+# checking if yes or no for beverage
+if(beverage_input == "Yes"): 
+  beverage_selected = True # beverage selected, used later for discount, applies to drink_selected and drink_input as well
 elif(beverage_input == "No"):
   beverage_selected = False
   drink = "none"
@@ -48,6 +50,7 @@ else:
   beverage_selected = False
   drink = "none"
 
+# checking which size and adding price
 if(beverage_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.75\nLarge - $2.25")
   drink = input("\nWhat size would you like?")
@@ -60,7 +63,7 @@ if(beverage_selected == True):
     print("You have selected:", drink)
   elif(drink == "Large"):
     total += 2.25
-    pnonrint("You have selected:", drink)
+    print("You have selected:", drink)
   else:
     print("No drink selected!")
     
@@ -84,7 +87,7 @@ if(fries_selected == True):
   fries = input("\nWhat size would you like?")
   
   if(fries == "Small"):
-    mega = input("Would you like to mega-size your fries?")
+    mega = input("Would you like to mega-size your fries?") # fries megasize, if small then ask if want big
     if(mega == "Yes"):
       fries = "Large"
     else:
@@ -102,12 +105,12 @@ if(fries_selected == True):
 else:
   print("No fries chosen!")
   
-packets = int(input("How many packets of ketchup would you like?"))
+packets = int(input("How many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
 
 total += packets * 0.25
 
-if(sandwich_selected == True and beverage_selected == True and fries_selected == True):
+if(sandwich_selected == True and beverage_selected == True and fries_selected == True): # discount code, subtracts 1$ if ordered all
   total -= 1.00
   
-print("You have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!")
-print("Your total is:", total)
+print("You have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
+print("Your total is: $", str(total)) # printing total
