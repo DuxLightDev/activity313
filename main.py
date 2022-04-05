@@ -26,16 +26,16 @@ order = []
 
 # iteration 1 - prompt user for sandwich type
 print("Sandwich Menu:\nChicken - $5.25\nBeef - $6.25\nTofu - $5.75\n")
-sandwich = input("Which sandwich would you like?\nType none for no sandwich") # asking for which sandwich wanted
+sandwich = input("Which sandwich would you like?\nType none for no sandwich").lower() # asking for which sandwich wanted
 
 # adding price for each type of sandwich
-if (sandwich == "Chicken"):
+if (sandwich == "chicken"):
   total += 5.25
   order.append("chicken")
-elif (sandwich == "Beef"):
+elif (sandwich == "beef"):
   total += 6.25
   order.append("beef")
-elif (sandwich == "Tofu"):
+elif (sandwich == "tofu"):
   total += 5.75
   order.append("tofu")
 else:
@@ -44,14 +44,11 @@ else:
   order.append("nothing")
 
 # iteration 2 - prompt user for drink
-beverage_input = input("\nWould you like a drink?") # beverage prompt; beverage_input = string of yes or no
+beverage_input = input("\nWould you like a drink?").lower() # beverage prompt; beverage_input = string of yes or no
 
 # checking if yes or no for beverage
-if(beverage_input == "Yes"): 
+if(beverage_input == "yes"): 
   beverage_selected = True # beverage selected, used later for discount, applies to drink_selected and drink_input as well
-elif(beverage_input == "No"):
-  beverage_selected = False
-  drink = "none"
 else:
   beverage_selected = False
   drink = "none"
@@ -60,32 +57,28 @@ else:
 # checking which size and adding price
 if(beverage_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.75\nLarge - $2.25")
-  drink = input("\nWhat size would you like?")
+  drink = input("\nWhat size would you like?").lower()
   
-  if(drink == "Small"):
+  if(drink == "small"):
     total += 1.0
     print("You have selected:", drink)
     order.append("small")
-  elif(drink == "Medium"):
+  elif(drink == "medium"):
     total += 1.75
     print("You have selected:", drink)
     order.append("medium")
-  elif(drink == "Large"):
+  elif(drink == "large"):
     total += 2.25
     print("You have selected:", drink)
     order.append("large")
   else:
     print("No drink selected!")
     order.append("nothing")
-    
-else:    
-  print("No drink selected!")
-  order.append("nothing")
 
 # iteration 3 - prompt user for french fires
-fries_input = input("\nWould you like french fries?")
+fries_input = input("\nWould you like french fries?").lower()
 
-if(fries_input == "Yes"):
+if(fries_input == "yes"):
   fries_selected = True
 else:
   fries_selected = False
@@ -94,31 +87,31 @@ else:
   
 if(fries_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.50\nLarge - $2.00")
-  fries = input("\nWhat size would you like?")
+  fries = input("\nWhat size would you like?").lower()
   
-  if(fries == "Small"):
-    mega = input("Would you like to mega-size your fries?") # fries megasize, if small then ask if want big
-    if(mega == "Yes"):
-      fries = "Large"
+  if(fries == "small"):
+    mega = input("Would you like to mega-size your fries?").lower() # fries megasize, if small then ask if want big
+    if(mega == "yes"):
+      fries = "large"
     else:
       total += 1.0
       print("You have chosen:", fries)
       order.append("small")
       
-  if(fries == "Medium"):
+  if(fries == "medium"):
     total += 1.5
     print("You have chosen:", fries)
     order.append("medium")
-  elif(fries == "Large"):
+  elif(fries == "large"):
     total += 2.0
     print("You have chosen:", fries)
     order.append("large")
-  else:
+  elif(fries != "large" and "medium" and "small"):
     print("No fries chosen!")
-else:
-  print("No fries chosen!")
-  order.append("nothing")
-
+    order.append("nothing") # fix this code later, bug detailed below
+    
+print(order) # debugging code for checking why it prints no fries chosen if you do not megasize small fries
+  
 # iteration 4 - prompt user for packets and repeat order and total
 while True:
   try:
