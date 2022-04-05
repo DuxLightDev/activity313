@@ -12,6 +12,7 @@
 #   beverage_input - string, yes or no for beverage
 #   fries_input - string,  yes or no for fries
 #   packets - amount of ketchup ordered
+#   order - list of the order
 #***************************************************
 
 
@@ -21,6 +22,7 @@ sandwich_selected = True
 beverage_selected = True
 fries_selected = True
 packets = 0
+order = []
 
 # iteration 1 - prompt user for sandwich type
 print("Sandwich Menu:\nChicken - $5.25\nBeef - $6.25\nTofu - $5.75\n")
@@ -29,13 +31,17 @@ sandwich = input("Which sandwich would you like?\nType none for no sandwich") # 
 # adding price for each type of sandwich
 if (sandwich == "Chicken"):
   total += 5.25
+  order.append("chicken")
 elif (sandwich == "Beef"):
   total += 6.25
+  order.append("beef")
 elif (sandwich == "Tofu"):
   total += 5.75
+  order.append("tofu")
 else:
   print("No sandwich selected!")
   sandwich_selected = False
+  order.append("nothing")
 
 # iteration 2 - prompt user for drink
 beverage_input = input("\nWould you like a drink?") # beverage prompt; beverage_input = string of yes or no
@@ -49,6 +55,7 @@ elif(beverage_input == "No"):
 else:
   beverage_selected = False
   drink = "none"
+  order.append("nothing")
 
 # checking which size and adding price
 if(beverage_selected == True):
@@ -58,29 +65,32 @@ if(beverage_selected == True):
   if(drink == "Small"):
     total += 1.0
     print("You have selected:", drink)
+    order.append("small")
   elif(drink == "Medium"):
     total += 1.75
     print("You have selected:", drink)
+    order.append("medium")
   elif(drink == "Large"):
     total += 2.25
     print("You have selected:", drink)
+    order.append("large")
   else:
     print("No drink selected!")
+    order.append("nothing")
     
 else:    
   print("No drink selected!")
+  order.append("nothing")
 
 # iteration 3 - prompt user for french fires
 fries_input = input("\nWould you like french fries?")
 
 if(fries_input == "Yes"):
   fries_selected = True
-elif(fries_input == "No"):
-  fries_selected = False
-  fries = "none"
 else:
   fries_selected = False
   fries = "none"
+  order.append("nothing")
   
 if(fries_selected == True):
   print("Sizes:\nSmall - $1.00\nMedium - $1.50\nLarge - $2.00")
@@ -93,20 +103,29 @@ if(fries_selected == True):
     else:
       total += 1.0
       print("You have chosen:", fries)
+      order.append("small")
       
   if(fries == "Medium"):
     total += 1.5
     print("You have chosen:", fries)
+    order.append("medium")
   elif(fries == "Large"):
     total += 2.0
     print("You have chosen:", fries)
+    order.append("large")
   else:
     print("No fries chosen!")
 else:
   print("No fries chosen!")
+  order.append("nothing")
 
 # iteration 4 - prompt user for packets and repeat order and total
-packets = int(input("\nHow many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
+while True:
+  try:
+    packets = int(input("\nHow many packets of ketchup would you like?")) # ketchup packets, asks for amount, multiples by .25
+    break
+  except ValueError:
+    print("You did not enter a valid integer!")
 
 total += packets * 0.25
 
@@ -114,5 +133,9 @@ if(sandwich_selected == True and beverage_selected == True and fries_selected ==
   total -= 1.00
   print("\nYou have been discounted for buying a combo meal!\n")
   
-print("\nYou have ordered a", sandwich, "sandwich, a", drink, "drink, and", fries, "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
+print("\nYou have ordered a", order[0], "sandwich, a", order[1], "drink, and", order[2], "fries!\nYou have also added", packets, "ketchup packets to your order!" ) # repeating order back
 print("\nYour total is: $", str(total)) # printing total
+
+# iteration 5 - qol
+
+# iteration 6 - adding order to a list, other qol, ketchup packet errors
