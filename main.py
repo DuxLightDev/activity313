@@ -96,9 +96,9 @@ if(fries_selected == True):
     else:
       total += 1.0
       print("You have chosen:", fries)
+      fries = "small"
       order.append("small")
-      
-  if(fries == "medium"):
+  elif(fries == "medium"):
     total += 1.5
     print("You have chosen:", fries)
     order.append("medium")
@@ -106,7 +106,7 @@ if(fries_selected == True):
     total += 2.0
     print("You have chosen:", fries)
     order.append("large")
-  elif(fries != "large" and "medium" and "small"):
+  elif(fries != "small" or "medium" or "large"):
     print("No fries chosen!")
     order.append("nothing") # fix this code later, bug detailed below
     
