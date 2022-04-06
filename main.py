@@ -92,7 +92,9 @@ if(fries_selected == True):
   if(fries == "small"):
     mega = input("Would you like to mega-size your fries?").lower() # fries megasize, if small then ask if want big
     if(mega == "yes"):
+      total += 2.0
       fries = "large"
+      order.append("large")
     else:
       total += 1.0
       print("You have chosen:", fries)
@@ -110,7 +112,8 @@ if(fries_selected == True):
     print("No fries chosen!")
     order.append("nothing") # fix this code later, bug detailed below
     
-print(order) # debugging code for checking why it prints no fries chosen if you do not megasize small fries
+# print(order) # debugging code for checking why it prints no fries chosen if you do not megasize small fries
+# print(total)
   
 # iteration 4 - prompt user for packets and repeat order and total
 while True:
