@@ -140,9 +140,7 @@ while(i == 0):
   else:
     i = 0
     print("\n")
-    drink = ""
-    fries = ""
-    sandwich = ""
+    order = []
 
 # iteration 5 - qol
 
